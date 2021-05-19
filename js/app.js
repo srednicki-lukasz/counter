@@ -1,3 +1,8 @@
+const output = document.querySelector('.output');
+const increaseButton = document.querySelector('[data-increase]');
+const decreaseButton = document.querySelector('[data-decrease]');
+const resetButton = document.querySelector('[data-reset]');
+
 class Counter {
     outputValue = 0;
 
@@ -29,11 +34,6 @@ class Counter {
         }
     }
 }
-
-const output = document.querySelector('.output');
-const increaseButton = document.querySelector('[data-increase]');
-const decreaseButton = document.querySelector('[data-decrease]');
-const resetButton = document.querySelector('[data-reset]');
 
 const counter = new Counter();
 
