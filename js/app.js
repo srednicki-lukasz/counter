@@ -1,19 +1,53 @@
-let outputValue = 0;
-const counter = document.querySelector('.counter');
+class Counter {
+    outputValue = 0;
 
-// counter
-document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-        const btnClassList = e.currentTarget.classList;
+    constructor() { }
 
-        btnClassList.contains('plus') ? outputValue++
-        : btnClassList.contains('minus') ? outputValue--
-        : outputValue = 0;
+    increase() {
+        this.outputValue++;
+    }
 
-        outputValue > 0 ? counter.style.color = 'green'
-        : outputValue < 0 ? counter.style.color = 'red'
-        : counter.style.color = 'black'
+    decrease() {
+        this.outputValue--;
+    }
 
-        counter.textContent = outputValue;
-    })
+    reset() {
+        this.outputValue = 0;
+    }
+
+    update() {
+        output.innerText = this.outputValue;
+
+        if (this.outputValue > 0) {
+            output.style.color = 'green';
+        }
+        else if (this.outputValue < 0) {
+            output.style.color = 'red';
+        }
+        else {
+            output.style.color = 'black';
+        }
+    }
+}
+
+const output = document.querySelector('.output');
+const increaseButton = document.querySelector('[data-increase]');
+const decreaseButton = document.querySelector('[data-decrease]');
+const resetButton = document.querySelector('[data-reset]');
+
+const counter = new Counter();
+
+increaseButton.addEventListener('click', () => {
+    counter.increase();
+    counter.update();
+});
+
+decreaseButton.addEventListener('click', () => {
+    counter.decrease();
+    counter.update();
+});
+
+resetButton.addEventListener('click', () => {
+    counter.reset();
+    counter.update();
 });
